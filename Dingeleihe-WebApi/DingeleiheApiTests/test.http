@@ -1,0 +1,139 @@
+POST http://localhost:5555/security/login
+Content-Type: application/json
+
+{
+  "NormalizedEmail": "johndoe",
+  "Password": "Wuxi123$%&"
+}
+
+> {% client.global.set("auth_token", response.body); %}
+
+###
+
+POST http://localhost:5555/security/shouldBeObfuscated?firstName=Abdullah&lastname=Aldesoky&dob=1990-05-15
+Content-Type: application/json
+
+{
+  "NormalizedEmail": "abdul",
+  "Password": "SupersicheresPWD123!"
+}
+
+
+###
+
+POST http://localhost:5555/security/login
+Content-Type: application/json
+
+{
+  "NormalizedEmail": "abdul",
+  "Password": "SupersicheresPWD123!"
+}
+
+> {% client.global.set("auth_token", response.body); %}
+
+###
+
+POST http://localhost:5555/shelves
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqb2huZG9lIiwic2NvcGUiOiJEaW5nZWxlaWhlQXBpLmF0IiwiVXNlcklkIjoiNDViZGRkNDItNjI1ZC00NjdmLWIxYjAtMmU2ZTYyMDJmMmY0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlJlbnRBVGhpbmdBZG1pbiIsIlJlbnRBVGhpbmdVc2VyIl0sImV4cCI6MTcxNzAwOTk0NSwiaXNzIjoiRGluZ2VsZWloZUFwaS5hdCIsImF1ZCI6IkRpbmdlbGVpaGVBcGkuYXQifQ.CVIFjUdYvz-JigZLCrNYy-dUZEbGI_T4DnosdE2zsyg
+
+{
+  "Location": "ExampleLocation"
+}
+
+###
+POST http://localhost:5555/things
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqb2huZG9lIiwic2NvcGUiOiJEaW5nZWxlaWhlQXBpLmF0IiwiVXNlcklkIjoiNDViZGRkNDItNjI1ZC00NjdmLWIxYjAtMmU2ZTYyMDJmMmY0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlJlbnRBVGhpbmdBZG1pbiIsIlJlbnRBVGhpbmdVc2VyIl0sImV4cCI6MTcxNzAwOTk0NSwiaXNzIjoiRGluZ2VsZWloZUFwaS5hdCIsImF1ZCI6IkRpbmdlbGVpaGVBcGkuYXQifQ.CVIFjUdYvz-JigZLCrNYy-dUZEbGI_T4DnosdE2zsyg
+
+{
+  "ShortName": "ExampleThing",
+  "Description": "This is an example thing",
+  "SerialNr": "1234567890",
+  "AgeRestriction": 18,
+  "ShelfId": 220
+}
+
+###
+
+PATCH http://localhost:5555/things
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqb2huZG9lIiwic2NvcGUiOiJEaW5nZWxlaWhlQXBpLmF0IiwiVXNlcklkIjoiMTMxOWM2YzAtY2NmYS00OTMzLWFlNDQtMjdkZTgxNzE0OGU2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlJlbnRBVGhpbmdBZG1pbiIsIlJlbnRBVGhpbmdVc2VyIl0sImV4cCI6MTcxNzAwODc1MSwiaXNzIjoiRGluZ2VsZWloZUFwaS5hdCIsImF1ZCI6IkRpbmdlbGVpaGVBcGkuYXQifQ.0xHfkwcM4-is_E855uI16y5pkv8gOKdrd4hVnhImjm0
+
+{
+  "ThingId": 213,
+  "ShortName": "Ball",
+  "Description": "ein Ball",
+  "SerialNr": "sf093f",
+  "AgeRestriction": 16,
+  "ThingImage": "aGVsbG8gd29ybGQ="
+}
+
+###
+
+POST http://localhost:5555/lendings
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqb2huZG9lIiwic2NvcGUiOiJEaW5nZWxlaWhlQXBpLmF0IiwiVXNlcklkIjoiMTMxOWM2YzAtY2NmYS00OTMzLWFlNDQtMjdkZTgxNzE0OGU2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlJlbnRBVGhpbmdBZG1pbiIsIlJlbnRBVGhpbmdVc2VyIl0sImV4cCI6MTcxNzAwODc1MSwiaXNzIjoiRGluZ2VsZWloZUFwaS5hdCIsImF1ZCI6IkRpbmdlbGVpaGVBcGkuYXQifQ.0xHfkwcM4-is_E855uI16y5pkv8gOKdrd4hVnhImjm0
+
+{
+  "userid": 175,
+  "thingid": 213,
+  "lendingDurationDays": 14
+}
+
+###
+
+DELETE http://localhost:5555/things/image
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqb2huZG9lIiwic2NvcGUiOiJEaW5nZWxlaWhlQXBpLmF0IiwiVXNlcklkIjoiMTMxOWM2YzAtY2NmYS00OTMzLWFlNDQtMjdkZTgxNzE0OGU2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlJlbnRBVGhpbmdBZG1pbiIsIlJlbnRBVGhpbmdVc2VyIl0sImV4cCI6MTcxNzAwODc1MSwiaXNzIjoiRGluZ2VsZWloZUFwaS5hdCIsImF1ZCI6IkRpbmdlbGVpaGVBcGkuYXQifQ.0xHfkwcM4-is_E855uI16y5pkv8gOKdrd4hVnhImjm0
+
+{
+  "ThingId": 213,
+  "Blob": null
+}
+
+###
+
+GET http://localhost:5555/things/image
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqb2huZG9lIiwic2NvcGUiOiJEaW5nZWxlaWhlQXBpLmF0IiwiVXNlcklkIjoiMTMxOWM2YzAtY2NmYS00OTMzLWFlNDQtMjdkZTgxNzE0OGU2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlJlbnRBVGhpbmdBZG1pbiIsIlJlbnRBVGhpbmdVc2VyIl0sImV4cCI6MTcxNzAwODc1MSwiaXNzIjoiRGluZ2VsZWloZUFwaS5hdCIsImF1ZCI6IkRpbmdlbGVpaGVBcGkuYXQifQ.0xHfkwcM4-is_E855uI16y5pkv8gOKdrd4hVnhImjm0
+
+{
+  "ThingId": 213,
+  "Blob": null
+}
+
+###
+
+POST http://localhost:5555/things/image
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqb2huZG9lIiwic2NvcGUiOiJEaW5nZWxlaWhlQXBpLmF0IiwiVXNlcklkIjoiMTMxOWM2YzAtY2NmYS00OTMzLWFlNDQtMjdkZTgxNzE0OGU2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlJlbnRBVGhpbmdBZG1pbiIsIlJlbnRBVGhpbmdVc2VyIl0sImV4cCI6MTcxNzAwODc1MSwiaXNzIjoiRGluZ2VsZWloZUFwaS5hdCIsImF1ZCI6IkRpbmdlbGVpaGVBcGkuYXQifQ.0xHfkwcM4-is_E855uI16y5pkv8gOKdrd4hVnhImjm0
+
+{
+  "ThingId": 213,
+  "Blob": "SGVsbG8sIFdvcmxkIQ=="
+}
+
+###
+
+GET http://localhost:5555/lendings?userid=175&thingid=213
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqb2huZG9lIiwic2NvcGUiOiJEaW5nZWxlaWhlQXBpLmF0IiwiVXNlcklkIjoiYTI3NDlmNTktMDUxZi00M2ZmLWFjMjAtYTJiZDZlNzlkODg1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlJlbnRBVGhpbmdBZG1pbiIsIlJlbnRBVGhpbmdVc2VyIl0sImV4cCI6MTcxNzAxMDYyMSwiaXNzIjoiRGluZ2VsZWloZUFwaS5hdCIsImF1ZCI6IkRpbmdlbGVpaGVBcGkuYXQifQ.rv5fTlTf3ZANmTpXRgs7lkKUj6V6vuxaL4Gw7UaNonI
+
+###
+
+POST http://localhost:5555/lendings
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqb2huZG9lIiwic2NvcGUiOiJEaW5nZWxlaWhlQXBpLmF0IiwiVXNlcklkIjoiYTI3NDlmNTktMDUxZi00M2ZmLWFjMjAtYTJiZDZlNzlkODg1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlJlbnRBVGhpbmdBZG1pbiIsIlJlbnRBVGhpbmdVc2VyIl0sImV4cCI6MTcxNzAxMDYyMSwiaXNzIjoiRGluZ2VsZWloZUFwaS5hdCIsImF1ZCI6IkRpbmdlbGVpaGVBcGkuYXQifQ.rv5fTlTf3ZANmTpXRgs7lkKUj6V6vuxaL4Gw7UaNonI
+
+{
+  "userid": 175,
+  "thingid": 213,
+  "lendingDurationDays": 5
+}
+
+###
+
+GET http://localhost:5555/lendings/thing/ExampleThing
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqb2huZG9lIiwic2NvcGUiOiJEaW5nZWxlaWhlQXBpLmF0IiwiVXNlcklkIjoiYTI3NDlmNTktMDUxZi00M2ZmLWFjMjAtYTJiZDZlNzlkODg1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlJlbnRBVGhpbmdBZG1pbiIsIlJlbnRBVGhpbmdVc2VyIl0sImV4cCI6MTcxNzAxMDYyMSwiaXNzIjoiRGluZ2VsZWloZUFwaS5hdCIsImF1ZCI6IkRpbmdlbGVpaGVBcGkuYXQifQ.rv5fTlTf3ZANmTpXRgs7lkKUj6V6vuxaL4Gw7UaNonI

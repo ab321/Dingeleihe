@@ -1,0 +1,36 @@
+<h1>Rent-A-Thing</h1>
+
+<!--- <h2>A Thing List</h2>
+
+<h3>Display only</h3>
+<app-thing-list [editable]="false"></app-thing-list>
+
+<h3> Editable </h3>
+<app-thing-list [editable]="true"></app-thing-list>
+
+<h2>A Library Customer List</h2>
+
+<h3>Display only</h3>
+<app-library-customer-list [editable]="false"></app-library-customer-list>
+
+<h3>Editable</h3>
+<app-library-customer-list [editable]="true"></app-library-customer-list>
+
+<h2>A Lending List</h2>
+
+<h3>Display only</h3>
+<app-lending-list [editable]="false"></app-lending-list>
+
+<h3>Editable</h3>
+<app-lending-list [editable]="true"></app-lending-list>
+
+-->
+
+<ul class="nav nav-tabs">
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Overview</a></li>
+    <li routerLinkActive="active"><a routerLink="Lendings">Lendings</a></li>
+    <li routerLinkActive="active"><a routerLink="Things">Things</a></li>
+    <li routerLinkActive="active"><a routerLink="Library Customers">Library Customers</a></li>
+</ul>
+
+<router-outlet></router-outlet>

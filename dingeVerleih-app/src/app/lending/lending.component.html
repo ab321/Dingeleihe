@@ -1,0 +1,37 @@
+<div>
+    <!---id: number = -1;
+    libraryCustomerId: number = -1;
+    libraryCustomer: LibraryCustomer = new LibraryCustomer(); 
+    thingId: number = -1;
+    thing: Thing = new Thing();
+    lendBegin: Date = new Date();
+    lendEnd: Date = new Date();-->
+
+    Thing: {{ lending.thing.shortName }},
+    Customer: {{ lending.libraryCustomer.firstName }},
+    Start Date: {{ lending.lendBegin.toLocaleDateString() }},
+    Due Date: {{ lending.lendEnd.toLocaleDateString() }},
+    Overdue: {{ isOverdue() ? 'Yes' : 'No' }}
+
+    <button class="btn btn-primary" *ngIf="!doEdit && editMode" (click)="doEdit=true">Edit</button>
+    <button *ngIf="editMode && doEdit" (click)="cancleEdit()">Cancel</button>
+    <button *ngIf="editMode && doEdit" (click)="saveLending()">done</button>
+</div>
+  
+<div *ngIf="editMode && doEdit">
+        Thing:
+        <select [(ngModel)]="selectedThing">
+            <option *ngFor="let thing of thingRepository.things" [ngValue]="thing">{{thing.shortName}}</option>
+        </select>
+        <br>
+        Customer:
+        <select [(ngModel)]="selectesLibraryCustomer">
+            <option *ngFor="let customer of libraryCustomerRepository.libraryCustomers" [ngValue]="customer">{{customer.firstName}}</option>
+        </select>
+        <br>
+        Start date:
+        <input type="date" [valueAsDate]="editLending.lendBegin" (input)="editLending.lendBegin=parseDate($event)" />
+        <br>
+        Due date:
+        <input type="date" [valueAsDate]="editLending.lendEnd" (input)="editLending.lendEnd=parseDate($event)" />
+</div>

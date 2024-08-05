@@ -1,0 +1,16 @@
+<button *ngIf="editable"  class="btn btn-primary" (click)="onNew()">New</button>
+<div *ngIf="doEdit">
+    <app-lending (doneEvent)="onDoneEvent()" (onEditCanceled)="onCancleEdit()" [lending]="newLending" [editMode]="true" [doEdit]="true"></app-lending>
+</div>
+
+<div *ngFor="let lending of lendingRepository.lendings; let i = index">
+    <table>
+        <tbody>
+            <tr>
+                <td><button *ngIf="editable"  class="btn btn-danger" (click)="onDelete(i)">Delete</button></td>
+                <td *ngIf="editable"><app-lending [lending]="lending" [editMode]="true"></app-lending></td>
+                <td *ngIf="!editable"><app-lending [lending]="lending" [editMode]="false"></app-lending></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

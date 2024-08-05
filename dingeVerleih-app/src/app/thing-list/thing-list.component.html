@@ -1,0 +1,17 @@
+<button *ngIf="editable" class="btn btn-primary" (click)="onNew()">New</button>
+<div *ngIf="doEdit">
+    <app-thing (doneEvent)="onDoneEvent()" (onEditCanceled)="onCancleEdit()" [thing]="newThing" [editMode]="true" [doEdit]="true"></app-thing>
+</div>
+
+<div *ngFor="let thing of thingRepository.things; let i = index">
+<table>
+    <tbody>
+        <tr>
+            <td><button *ngIf="editable" class="btn btn-danger" (click)="onDelete(i)">Delete</button></td>
+            <td *ngIf="!editable"><app-thing [thing]="thing" [editMode]="false"></app-thing></td>
+            <td *ngIf="editable"><app-thing [thing]="thing"  [editMode]="true"></app-thing></td>
+        </tr>
+    </tbody>
+</table>
+
+</div>

@@ -1,0 +1,16 @@
+<button *ngIf="editable"  class="btn btn-primary" (click)="onNew()">New</button>
+<div *ngIf="doEdit">
+    <app-library-customer (doneEvent)="onDoneEvent()" (onEditCanceled)="onCancleEdit()" [libraryCustomer]="newLibraryCustomer" [editMode]="true" [doEdit]="true"></app-library-customer>
+</div>
+
+<div *ngFor="let libcust of libraryCustomerRepository.libraryCustomers; let i = index">
+    <table>
+        <tbody>
+            <tr>
+                <td><button *ngIf="editable"  class="btn btn-danger" (click)="onDelete(i)">Delete</button></td>
+                <td *ngIf="!editable"><app-library-customer [libraryCustomer]="libcust" [editMode]="false"></app-library-customer></td>
+                <td *ngIf="editable"><app-library-customer [libraryCustomer]="libcust" [editMode]="true"></app-library-customer></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

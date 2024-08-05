@@ -1,0 +1,27 @@
+<div>
+    id: {{thing.id}},
+    name: {{thing.shortName}},
+    description: {{thing.description}},
+    category: {{thing.category}},
+    shelf: {{thing.shelf}}
+
+    <button class="btn btn-primary" *ngIf="!doEdit && editMode" (click)="doEdit=true">Edit</button>
+    <button *ngIf="editMode && doEdit" (click)="cancleEdit()">Cancel</button>
+    <button *ngIf="editMode && doEdit" (click)="saveThing()">done</button>
+</div>
+
+<div *ngIf="editMode && doEdit">
+
+    New short name:
+    <input type="text" [(ngModel)]="editThing.shortName" />
+    <br>
+    New description:
+    <input type="text" [(ngModel)]="editThing.description" />
+    <br>
+    New category:
+    <input type="text" [(ngModel)]="editThing.category" />
+    <br>
+    New shelf:
+    <input type="text" [(ngModel)]="editThing.shelf" />
+    <br>
+</div>

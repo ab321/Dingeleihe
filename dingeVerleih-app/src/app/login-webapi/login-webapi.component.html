@@ -1,0 +1,15 @@
+<table>
+    <tr>
+        <td>
+            UserName:
+            <input type="text" [(ngModel)]="username"/>
+        </td>
+    </tr>
+    <td>
+        Password:
+        <input type="password" [(ngModel)]="password"/>
+    </td>
+</table>
+
+<button *ngIf="dingeLeiheWebApi.IsUserLoggedIn()" (click)="logout()">Logout</button>
+<button *ngIf="!dingeLeiheWebApi.IsUserLoggedIn()" (click)="login()">Login</button>
